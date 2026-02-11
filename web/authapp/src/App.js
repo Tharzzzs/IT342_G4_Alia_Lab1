@@ -14,7 +14,7 @@ function App() {
       {/* 2. Moved Profile above the catch-all '*' route */}
       <Route path="/profile" element={<Profile />} />
 
-      {/* 3. Catch-all routes must always be at the very bottom */}
+      
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>

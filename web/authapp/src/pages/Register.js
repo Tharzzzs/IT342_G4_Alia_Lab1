@@ -20,17 +20,21 @@ const Register = () => {
     const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const { data } = await registerUser(form);
+        const response = await registerUser(form);
+        const { data } = response;
         
-        // Auto-save data on successful registration
+        // Save to localStorage using the names from AuthResponse.java
         localStorage.setItem('token', data.token);
         localStorage.setItem('userEmail', data.user.email);
         localStorage.setItem('userName', data.user.fullName);
-        localStorage.setItem('userCreatedAt', data.user.createdAt);
         
         navigate('/dashboard');
     } catch (err) {
-        alert("Registration failed");
+        // OPEN YOUR BROWSER CONSOLE (F12) TO SEE THIS:
+        console.error("FULL ERROR OBJECT:", err);
+        console.log("SERVER ERROR MESSAGE:", err.response?.data);
+        
+        alert("Registration failed: " + (err.response?.data?.message || "Check console"));
     }
 };
 

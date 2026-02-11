@@ -25,15 +25,15 @@ public class AuthService {
         }
 
         User user = new User();
-        user.setUserId(UUID.randomUUID().toString());
-        user.setFullName(req.getName());
+        // Manual ID generation since you reverted the entity
+       
+        user.setFullName(req.getName()); // Taking 'name' from DTO
         user.setEmail(req.getEmail());
         user.setPasswordHash(encoder.encode(req.getPassword()));
-        user.setCreatedAt(new Date());
+        user.setCreatedAt(new java.util.Date());
 
         userRepository.save(user);
 
-        // Auto-login: generate token immediately
         String token = tokenProvider.generateToken(user.getEmail());
         UserDTO userDto = new UserDTO(user.getEmail(), user.getFullName(), user.getCreatedAt());
 
