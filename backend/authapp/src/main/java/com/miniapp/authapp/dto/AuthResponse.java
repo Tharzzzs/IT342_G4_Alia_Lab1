@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class AuthResponse {
     private String message;
     private String token;
+    private UserDTO user; // This allows React to see the user's name and date
 }

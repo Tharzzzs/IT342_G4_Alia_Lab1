@@ -24,6 +24,6 @@ public class AuthController {
 
     @PostMapping("/logout") // [cite: 156, 182]
     public AuthResponse logout() {
-        return new AuthResponse("Logout successful!", null);
+        return new AuthResponse("Logout successful!", null, null);
     }
 }
