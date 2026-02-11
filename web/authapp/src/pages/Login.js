@@ -29,7 +29,7 @@ const Login = () => {
         localStorage.setItem('userName', data.user.fullName); // Matches user.fullName in Java
         localStorage.setItem('userCreatedAt', data.user.createdAt); // Matches user.createdAt in Java
         
-        navigate('/dashboard');
+        navigate('/dashboard', { replace: true });
     } catch (err) {
         alert("Invalid Credentials");
     }

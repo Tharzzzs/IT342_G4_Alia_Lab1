@@ -28,7 +28,7 @@ const Register = () => {
         localStorage.setItem('userEmail', data.user.email);
         localStorage.setItem('userName', data.user.fullName);
         
-        navigate('/dashboard');
+        navigate('/dashboard', { replace: true });
     } catch (err) {
         // OPEN YOUR BROWSER CONSOLE (F12) TO SEE THIS:
         console.error("FULL ERROR OBJECT:", err);
